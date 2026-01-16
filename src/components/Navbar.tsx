@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Terminal } from "lucide-react";
+import { Menu, X, Code2 } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,10 +13,10 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--primary)]/10 border border-[var(--primary)]/20">
-            <Terminal className="w-5 h-5 text-[var(--primary)]" />
+            <Code2 className="w-5 h-5 text-[var(--primary)]" />
           </div>
           <span className="text-white text-lg font-bold tracking-tight">
-            NEURAL<span className="text-[var(--primary)]">.DEV</span>
+            FARAZ<span className="text-[var(--primary)]">.DEV</span>
           </span>
         </div>
 
@@ -54,9 +54,9 @@ export default function Navbar() {
             href="#contact"
             className="hidden sm:flex items-center justify-center rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/40 hover:bg-[var(--primary)] hover:text-[var(--background)] px-5 py-2 text-sm font-bold text-[var(--primary)] transition-all duration-300"
           >
-            Let&apos;s Talk
+            Get in Touch
           </Link>
-          
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white"
@@ -97,7 +97,7 @@ export default function Navbar() {
               className="text-[var(--primary)] text-base font-bold transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Let&apos;s Talk
+              Get in Touch
             </Link>
           </div>
         </div>

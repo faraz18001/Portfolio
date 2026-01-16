@@ -54,7 +54,7 @@ export default function HeroSection() {
                 >
                     <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse" />
                     <span className="font-mono text-xs font-medium text-[var(--primary)] tracking-wider">
-                        SYSTEM STATUS: MODEL LOADED - 98% ACCURACY
+                        AVAILABLE FOR NEW PROJECTS
                     </span>
                 </motion.div>
 
@@ -67,11 +67,11 @@ export default function HeroSection() {
                 >
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter pb-2">
                         <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">
-                            AI SOFTWARE
+                            Hey, I&apos;m
                         </span>
                         <br className="hidden md:block" />
                         <span className="text-white drop-shadow-[0_0_15px_rgba(0,225,255,0.3)]">
-                            ENGINEER
+                            Faraz
                         </span>
                     </h1>
 
@@ -87,10 +87,11 @@ export default function HeroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                    Architecting intelligent systems using{" "}
-                    <span className="text-white font-medium">Deep Learning</span> &{" "}
-                    <span className="text-white font-medium">LLMs</span>.
-                    Turning complex data into actionable cognitive pipelines.
+                    AI Software Engineer building{" "}
+                    <span className="text-white font-medium">intelligent systems</span> with{" "}
+                    <span className="text-white font-medium">RAG</span>,{" "}
+                    <span className="text-white font-medium">LLMs</span>, and{" "}
+                    <span className="text-white font-medium">predictive analytics</span>.
                 </motion.p>
 
                 {/* CTA Button */}
@@ -101,10 +102,13 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                 >
                     <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--primary)] opacity-75 blur transition duration-500 group-hover:opacity-100" />
-                    <button className="relative flex items-center justify-center gap-3 rounded-lg bg-[var(--background)] px-8 py-4 text-base font-bold text-white transition-all hover:bg-[#0c1624]">
-                        <span>Explore My Work</span>
+                    <a
+                        href="#projects"
+                        className="relative flex items-center justify-center gap-3 rounded-lg bg-[var(--background)] px-8 py-4 text-base font-bold text-white transition-all hover:bg-[#0c1624]"
+                    >
+                        <span>View My Work</span>
                         <ArrowRight className="w-5 h-5 text-[var(--primary)] group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </a>
                 </motion.div>
 
                 {/* Floating Context Chips */}
@@ -114,9 +118,9 @@ export default function HeroSection() {
                     transition={{ duration: 6, repeat: Infinity }}
                 >
                     <div className="glass-panel px-4 py-2 rounded-lg flex items-center gap-2 border-l-2 border-l-[var(--primary)]">
-                        <span className="text-[var(--primary)] text-sm">&#128065;</span>
+                        <span className="text-[var(--primary)] text-sm">&#128202;</span>
                         <span className="text-gray-200 text-xs font-mono font-bold uppercase tracking-wider">
-                            Computer Vision
+                            Data Analytics
                         </span>
                     </div>
                     <div className="h-12 w-[1px] bg-gradient-to-b from-[var(--primary)]/40 to-transparent" />
@@ -128,9 +132,9 @@ export default function HeroSection() {
                     transition={{ duration: 7, repeat: Infinity, delay: 1 }}
                 >
                     <div className="glass-panel px-4 py-2 rounded-lg flex items-center gap-2 border-r-2 border-r-[var(--secondary)]">
-                        <span className="text-[var(--secondary)] text-sm">&#128172;</span>
+                        <span className="text-[var(--secondary)] text-sm">&#129302;</span>
                         <span className="text-gray-200 text-xs font-mono font-bold uppercase tracking-wider">
-                            NLP / Transformers
+                            RAG Systems
                         </span>
                     </div>
                     <div className="h-12 w-[1px] bg-gradient-to-t from-[var(--secondary)]/40 to-transparent" />
@@ -146,7 +150,7 @@ export default function HeroSection() {
                     <div className="glass-panel px-3 py-1.5 rounded-full flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                         <span className="text-gray-300 text-[10px] font-mono uppercase tracking-wider">
-                            AI Agents Active
+                            ML Forecasting
                         </span>
                     </div>
                 </motion.div>
@@ -164,18 +168,18 @@ export default function HeroSection() {
                         {/* Tech Stack */}
                         <div className="flex items-center gap-3 text-gray-400">
                             <span className="text-[var(--primary)]">&#128187;</span>
-                            <span className="text-sm font-mono">/usr/bin/python3 - TensorFlow 2.x - PyTorch</span>
+                            <span className="text-sm font-mono">Python - FastAPI - React - LangChain</span>
                         </div>
 
                         {/* Metrics */}
                         <div className="flex gap-6">
                             <div className="flex flex-col">
                                 <span className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Projects</span>
-                                <span className="text-white font-mono text-sm">24+ Shipped</span>
+                                <span className="text-white font-mono text-sm">3 Live Systems</span>
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Experience</span>
-                                <span className="text-white font-mono text-sm">5 Years</span>
+                                <span className="text-white font-mono text-sm">3 Years</span>
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-[10px] text-gray-500 uppercase tracking-wider font-bold">Status</span>

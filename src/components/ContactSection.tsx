@@ -28,10 +28,10 @@ export default function ContactSection() {
     };
 
     const socialLinks = [
-        { icon: <Github className="w-5 h-5" />, href: "#", label: "GitHub" },
+        { icon: <Github className="w-5 h-5" />, href: "https://github.com/faraz18001", label: "GitHub" },
         { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
         { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
-        { icon: <Mail className="w-5 h-5" />, href: "#", label: "Email" },
+        { icon: <Mail className="w-5 h-5" />, href: "mailto:faraz@example.com", label: "Email" },
     ];
 
     return (
@@ -76,15 +76,15 @@ export default function ContactSection() {
                 >
                     <div className="flex items-center justify-center gap-2 text-[var(--primary)]/60 mb-4">
                         <div className="w-8 h-[1px] bg-[var(--primary)]/40" />
-                        <span className="text-xs font-mono tracking-widest uppercase">Establish Connection</span>
+                        <span className="text-xs font-mono tracking-widest uppercase">Get in Touch</span>
                         <div className="w-8 h-[1px] bg-[var(--primary)]/40" />
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Let&apos;s Build Something
-                        <span className="text-[var(--primary)]"> Intelligent</span>
+                        Let&apos;s Work
+                        <span className="text-[var(--primary)]"> Together</span>
                     </h2>
                     <p className="text-gray-400 max-w-lg mx-auto">
-                        Have a project in mind? Looking for AI expertise? Let&apos;s connect and explore the possibilities.
+                        Have a project in mind? Looking for AI expertise? I&apos;d love to hear from you.
                     </p>
                 </motion.div>
 
@@ -154,7 +154,7 @@ export default function ContactSection() {
                                 {isSubmitting ? (
                                     <>
                                         <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-                                        Transmitting...
+                                        Sending...
                                     </>
                                 ) : isSubmitted ? (
                                     <>
@@ -189,6 +189,8 @@ export default function ContactSection() {
                                     <a
                                         key={i}
                                         href={link.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex items-center gap-3 p-3 rounded-lg bg-[#15191c] border border-gray-800 hover:border-[var(--primary)]/50 hover:bg-[var(--primary)]/10 transition-all group"
                                     >
                                         <span className="text-gray-400 group-hover:text-[var(--primary)] transition-colors">
@@ -212,7 +214,7 @@ export default function ContactSection() {
                                     <Download className="w-8 h-8 text-[var(--primary)]" />
                                 </div>
                                 <p className="text-gray-400 text-sm text-center mb-4">
-                                    Download my full resume with detailed project history and skills.
+                                    Download my resume for detailed project history and skills.
                                 </p>
                                 <button className="px-6 py-3 rounded-lg border border-[var(--primary)]/40 text-[var(--primary)] font-bold text-sm uppercase tracking-wider hover:bg-[var(--primary)] hover:text-black transition-all">
                                     Download CV
@@ -231,7 +233,7 @@ export default function ContactSection() {
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
                     <p className="text-xs font-mono text-gray-600">
-                        NEURAL.DEV - 2026 // SECURE CONNECTION ESTABLISHED
+                        FARAZ.DEV - 2026
                     </p>
                     <p className="text-xs font-mono text-gray-700 mt-2">
                         Built with Next.js, TypeScript & Framer Motion

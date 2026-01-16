@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const skills = [
-    { name: "GENERATIVE AI", value: 95, angle: 0 },
-    { name: "COMP VISION", value: 85, angle: 60 },
-    { name: "MLOPS", value: 70, angle: 120 },
-    { name: "DATA ANALYTICS", value: 90, angle: 180 },
-    { name: "NLP", value: 80, angle: 240 },
-    { name: "REINFORCEMENT", value: 60, angle: 300 },
+    { name: "RAG SYSTEMS", value: 95, angle: 0 },
+    { name: "DATA ANALYTICS", value: 90, angle: 60 },
+    { name: "FULL STACK", value: 85, angle: 120 },
+    { name: "ML / FORECASTING", value: 80, angle: 180 },
+    { name: "LLM AGENTS", value: 90, angle: 240 },
+    { name: "PYTHON", value: 95, angle: 300 },
 ];
 
 export default function SkillMatrix() {
@@ -53,9 +53,9 @@ export default function SkillMatrix() {
             {/* Chart Title */}
             <div className="absolute top-6 left-8 flex flex-col gap-1">
                 <span className="text-xs font-mono text-[var(--primary)]/70 tracking-widest">
-                    VISUALIZATION_MODULE
+                    SKILL_MATRIX
                 </span>
-                <h3 className="text-xl font-bold text-white">Skill Matrix</h3>
+                <h3 className="text-xl font-bold text-white">Core Competencies</h3>
             </div>
 
             {/* SVG Radar Chart */}

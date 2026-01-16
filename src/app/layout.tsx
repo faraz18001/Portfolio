@@ -16,13 +16,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Neural.Dev | AI Software Engineer Portfolio",
-  description: "AI Software Engineer specializing in Deep Learning, LLMs, Computer Vision, and Data Analytics. Architecting intelligent systems and cognitive pipelines.",
-  keywords: ["AI Engineer", "Machine Learning", "Deep Learning", "LLMs", "Computer Vision", "Data Analytics", "Python", "TensorFlow", "PyTorch"],
-  authors: [{ name: "Neural.Dev" }],
+  title: "Faraz | AI Software Engineer",
+  description: "AI Software Engineer with 3 years of experience building intelligent systems with RAG, LLMs, and predictive analytics. Specializing in full-stack AI applications.",
+  keywords: ["AI Engineer", "Faraz", "RAG Systems", "LLM", "FastAPI", "React", "Data Analytics", "Machine Learning", "Python"],
+  authors: [{ name: "Faraz" }],
   openGraph: {
-    title: "Neural.Dev | AI Software Engineer Portfolio",
-    description: "Architecting intelligent systems using Deep Learning & LLMs",
+    title: "Faraz | AI Software Engineer",
+    description: "Building intelligent systems with RAG, LLMs, and predictive analytics",
     type: "website",
   },
 };

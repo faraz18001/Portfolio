@@ -34,19 +34,12 @@ function AnimatedCounter({ end, suffix = "", duration = 2000 }: CounterProps) {
     return <span>{count.toLocaleString()}{suffix}</span>;
 }
 
-const techStack = [
-    { name: "PY", color: "#ffffff", title: "Python" },
-    { name: "TF", color: "#FF6F00", title: "TensorFlow" },
-    { name: "PT", color: "#EE4C2C", title: "PyTorch" },
-    { name: "DK", color: "#2496ED", title: "Docker" },
-];
-
 export default function MetricsDashboard() {
     return (
         <div className="flex flex-col gap-6">
             {/* Metrics Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Total Deployments - Large Card */}
+                {/* Live Projects - Large Card */}
                 <motion.div
                     className="col-span-1 sm:col-span-2 relative p-5 rounded-xl border border-[var(--glass-border)] bg-[#15191c]/80 backdrop-blur-sm overflow-hidden"
                     initial={{ opacity: 0, y: 20 }}
@@ -58,26 +51,26 @@ export default function MetricsDashboard() {
                         <span className="text-6xl">&#128640;</span>
                     </div>
                     <p className="text-xs font-mono text-[var(--primary)] mb-1 tracking-wider">
-                        TOTAL DEPLOYMENTS
+                        LIVE SYSTEMS
                     </p>
                     <div className="flex items-baseline gap-2">
                         <span className="text-4xl font-bold text-white font-mono text-glow">
-                            <AnimatedCounter end={42} />
+                            <AnimatedCounter end={3} />
                         </span>
-                        <span className="text-xs text-gray-500 font-mono">MODELS</span>
+                        <span className="text-xs text-gray-500 font-mono">PRODUCTION APPS</span>
                     </div>
                     <div className="w-full bg-gray-800 h-1 mt-4 rounded-full overflow-hidden">
                         <motion.div
                             className="bg-[var(--primary)] h-full shadow-[0_0_10px_var(--primary)]"
                             initial={{ width: 0 }}
-                            whileInView={{ width: "85%" }}
+                            whileInView={{ width: "100%" }}
                             viewport={{ once: true }}
                             transition={{ duration: 1, delay: 0.5 }}
                         />
                     </div>
                 </motion.div>
 
-                {/* Contributions */}
+                {/* Experience */}
                 <motion.div
                     className="relative p-5 rounded-xl border border-[var(--glass-border)] bg-[#15191c]/80 backdrop-blur-sm"
                     initial={{ opacity: 0, y: 20 }}
@@ -85,16 +78,16 @@ export default function MetricsDashboard() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    <p className="text-xs font-mono text-gray-400 mb-1">CONTRIBUTIONS</p>
+                    <p className="text-xs font-mono text-gray-400 mb-1">EXPERIENCE</p>
                     <span className="text-3xl font-bold text-white font-mono">
-                        <AnimatedCounter end={1204} />
+                        <AnimatedCounter end={3} /> Years
                     </span>
-                    <div className="text-[10px] text-green-400 mt-2 flex items-center gap-1">
-                        <span>&#8593;</span> +12% this week
+                    <div className="text-[10px] text-[var(--primary)] mt-2 flex items-center gap-1">
+                        <span>&#128187;</span> AI Software Engineer
                     </div>
                 </motion.div>
 
-                {/* Accuracy */}
+                {/* Tech Focus */}
                 <motion.div
                     className="relative p-5 rounded-xl border border-[var(--glass-border)] bg-[#15191c]/80 backdrop-blur-sm"
                     initial={{ opacity: 0, y: 20 }}
@@ -102,18 +95,17 @@ export default function MetricsDashboard() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <p className="text-xs font-mono text-gray-400 mb-1">ACCURACY AVG</p>
-                    <span className="text-3xl font-bold text-white font-mono">
-                        <AnimatedCounter end={98} suffix="." />
-                        <span className="text-lg text-gray-500">5%</span>
+                    <p className="text-xs font-mono text-gray-400 mb-1">TECH FOCUS</p>
+                    <span className="text-2xl font-bold text-white font-mono">
+                        RAG & LLMs
                     </span>
-                    <div className="text-[10px] text-[var(--primary)] mt-2 flex items-center gap-1">
-                        <span>&#10003;</span> Validated
+                    <div className="text-[10px] text-green-400 mt-2 flex items-center gap-1">
+                        <span>&#10003;</span> Full-Stack AI
                     </div>
                 </motion.div>
             </div>
 
-            {/* Orbital Tech Stack */}
+            {/* Tech Stack Display */}
             <motion.div
                 className="flex-grow min-h-[300px] relative rounded-2xl border border-[var(--glass-border)] glass-panel flex items-center justify-center overflow-hidden"
                 initial={{ opacity: 0 }}
@@ -123,7 +115,7 @@ export default function MetricsDashboard() {
             >
                 {/* Label */}
                 <div className="absolute top-4 right-4 text-xs font-mono text-gray-500 z-20">
-                    TECH_STACK_ORBITAL_VIEW
+                    TECH_STACK_VIEW
                 </div>
 
                 {/* Core */}
@@ -150,18 +142,18 @@ export default function MetricsDashboard() {
                     {/* Orbiting Items */}
                     <div
                         className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1b2226] p-1.5 rounded-full border border-gray-600 shadow-lg"
-                        title="Python"
+                        title="FastAPI"
                     >
-                        <div className="w-6 h-6 flex items-center justify-center text-white font-bold text-xs">
-                            PY
+                        <div className="w-6 h-6 flex items-center justify-center text-green-400 font-bold text-xs">
+                            FA
                         </div>
                     </div>
                     <div
                         className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#1b2226] p-1.5 rounded-full border border-gray-600 shadow-lg"
-                        title="TensorFlow"
+                        title="React"
                     >
-                        <div className="w-6 h-6 flex items-center justify-center text-orange-500 font-bold text-xs">
-                            TF
+                        <div className="w-6 h-6 flex items-center justify-center text-cyan-400 font-bold text-xs">
+                            Re
                         </div>
                     </div>
                 </motion.div>
@@ -174,18 +166,18 @@ export default function MetricsDashboard() {
                 >
                     <div
                         className="absolute top-1/2 -right-4 -translate-y-1/2 bg-[#1b2226] p-2 rounded-full border border-gray-600 shadow-lg"
-                        title="PyTorch"
+                        title="LangChain"
                     >
-                        <div className="w-6 h-6 flex items-center justify-center text-red-500 font-bold text-xs">
-                            PT
+                        <div className="w-6 h-6 flex items-center justify-center text-yellow-400 font-bold text-xs">
+                            LC
                         </div>
                     </div>
                     <div
                         className="absolute top-1/2 -left-4 -translate-y-1/2 bg-[#1b2226] p-2 rounded-full border border-gray-600 shadow-lg"
-                        title="Docker"
+                        title="Python"
                     >
-                        <div className="w-6 h-6 flex items-center justify-center text-blue-500 font-bold text-xs">
-                            DK
+                        <div className="w-6 h-6 flex items-center justify-center text-blue-400 font-bold text-xs">
+                            Py
                         </div>
                     </div>
                 </motion.div>
