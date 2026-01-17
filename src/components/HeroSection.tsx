@@ -2,12 +2,16 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "@phosphor-icons/react";
+import ParticleBackground from "./ParticleBackground";
 
 export default function HeroSection() {
     return (
         <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20">
             {/* Background Effects */}
             <div className="absolute inset-0 pointer-events-none z-0">
+                {/* Animated Neural Network Particles */}
+                <ParticleBackground />
+
                 {/* Grid Pattern */}
                 <div
                     className="absolute inset-0 bg-grid-pattern opacity-20"
