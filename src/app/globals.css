@@ -6,16 +6,16 @@
   --primary: #00e1ff;
   --secondary: #B537F2;
   --accent: #3B82F6;
-  
+
   /* Backgrounds */
   --background: #0b1013;
   --background-light: #161b1d;
   --surface: #1a2325;
-  
+
   /* Glass Effects */
   --glass-bg: rgba(11, 16, 19, 0.7);
   --glass-border: rgba(255, 255, 255, 0.08);
-  
+
   /* Text */
   --foreground: #ffffff;
   --foreground-muted: #9ab8bc;
@@ -32,11 +32,11 @@
   --color-foreground-muted: var(--foreground-muted);
   --color-glass-bg: var(--glass-bg);
   --color-glass-border: var(--glass-border);
-  
+
   /* Fonts */
   --font-display: "Space Grotesk", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  
+  --font-mono: "Source Code Pro", monospace;
+
   /* Animations */
   --animate-pulse-glow: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-spin-slow: spin 20s linear infinite;
@@ -47,24 +47,41 @@
 
 /* Custom Keyframes */
 @keyframes pulse-glow {
-  0%, 100% { 
-    opacity: 1; 
-    filter: drop-shadow(0 0 5px var(--primary)); 
+
+  0%,
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--primary));
   }
-  50% { 
-    opacity: 0.8; 
-    filter: drop-shadow(0 0 15px var(--primary)); 
+
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 15px var(--primary));
   }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Base Styles */
@@ -85,7 +102,7 @@ body {
 
 /* Grid Background Pattern */
 .bg-grid-pattern {
-  background-image: 
+  background-image:
     linear-gradient(to right, #1f2937 1px, transparent 1px),
     linear-gradient(to bottom, #1f2937 1px, transparent 1px);
   background-size: 40px 40px;
@@ -93,13 +110,11 @@ body {
 
 /* Scanline Effect */
 .scanlines {
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0),
-    rgba(255,255,255,0) 50%,
-    rgba(0,0,0,0.1) 50%,
-    rgba(0,0,0,0.1)
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.1));
   background-size: 100% 4px;
   pointer-events: none;
 }
@@ -130,7 +145,7 @@ body {
   border-radius: 0.75rem;
 }
 
-.gradient-border-wrapper > * {
+.gradient-border-wrapper>* {
   border-radius: 0.75rem;
 }
 

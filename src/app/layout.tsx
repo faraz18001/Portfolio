@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -9,10 +9,10 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const sourceCodePro = Source_Code_Pro({
   variable: "--font-mono",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-[var(--background)] text-white overflow-x-hidden`}
+        className={`${spaceGrotesk.variable} ${sourceCodePro.variable} antialiased bg-[var(--background)] text-white overflow-x-hidden`}
       >
         {/* Scanline Overlay */}
         <div className="fixed inset-0 w-full h-full scanlines z-50 pointer-events-none opacity-20" />
