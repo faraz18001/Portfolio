@@ -34,6 +34,97 @@ function AnimatedCounter({ end, suffix = "", duration = 2000 }: CounterProps) {
     return <span>{count.toLocaleString()}{suffix}</span>;
 }
 
+const techStack = {
+    languages: [
+        { name: "Python", icon: "PY", color: "#3776AB" },
+        { name: "C++", icon: "C+", color: "#00599C" },
+    ],
+    aiml: [
+        { name: "LangChain", icon: "LC", color: "#00e1ff" },
+        { name: "HuggingFace", icon: "HF", color: "#FFD21E" },
+        { name: "OpenAI", icon: "OA", color: "#00A67E" },
+        { name: "Ollama", icon: "OL", color: "#ffffff" },
+    ],
+    backend: [
+        { name: "FastAPI", icon: "FA", color: "#009688" },
+        { name: "FAISS", icon: "FS", color: "#B537F2" },
+        { name: "DuckDB", icon: "DB", color: "#FFC107" },
+    ],
+    frontend: [
+        { name: "React", icon: "Re", color: "#61DAFB" },
+        { name: "Vite", icon: "Vt", color: "#646CFF" },
+    ],
+    devops: [
+        { name: "Docker", icon: "Dk", color: "#2496ED" },
+        { name: "Git", icon: "Gt", color: "#F05032" },
+        { name: "Jupyter", icon: "Jp", color: "#F37626" },
+        { name: "Vertex AI", icon: "VA", color: "#4285F4" },
+    ],
+};
+
+interface TechItemProps {
+    name: string;
+    icon: string;
+    color: string;
+    delay: number;
+}
+
+function TechItem({ name, icon, color, delay }: TechItemProps) {
+    return (
+        <motion.div
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#15191c] border border-gray-800 hover:border-gray-600 transition-all group cursor-default"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, delay }}
+            whileHover={{ scale: 1.05 }}
+        >
+            <div
+                className="w-7 h-7 rounded flex items-center justify-center font-mono text-xs font-bold border"
+                style={{
+                    color: color,
+                    borderColor: `${color}40`,
+                    backgroundColor: `${color}10`,
+                    textShadow: `0 0 10px ${color}50`
+                }}
+            >
+                {icon}
+            </div>
+            <span className="text-xs font-mono text-gray-300 group-hover:text-white transition-colors">
+                {name}
+            </span>
+        </motion.div>
+    );
+}
+
+interface TechCategoryProps {
+    title: string;
+    items: Array<{ name: string; icon: string; color: string }>;
+    baseDelay: number;
+}
+
+function TechCategory({ title, items, baseDelay }: TechCategoryProps) {
+    return (
+        <div className="mb-4">
+            <div className="flex items-center gap-2 mb-2">
+                <span className="text-[var(--primary)] font-mono text-xs">//</span>
+                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">{title}</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+                {items.map((item, index) => (
+                    <TechItem
+                        key={item.name}
+                        name={item.name}
+                        icon={item.icon}
+                        color={item.color}
+                        delay={baseDelay + index * 0.05}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
 export default function MetricsDashboard() {
     return (
         <div className="flex flex-col gap-6">
@@ -48,7 +139,7 @@ export default function MetricsDashboard() {
                     transition={{ duration: 0.6 }}
                 >
                     <div className="absolute right-0 top-0 p-4 opacity-10">
-                        <span className="text-6xl">&#128640;</span>
+                        <span className="text-6xl font-mono">&gt;_</span>
                     </div>
                     <p className="text-xs font-mono text-[var(--primary)] mb-1 tracking-wider">
                         LIVE SYSTEMS
@@ -82,8 +173,8 @@ export default function MetricsDashboard() {
                     <span className="text-3xl font-bold text-white font-mono">
                         <AnimatedCounter end={3} /> Years
                     </span>
-                    <div className="text-[10px] text-[var(--primary)] mt-2 flex items-center gap-1">
-                        <span>&#128187;</span> AI Software Engineer
+                    <div className="text-[10px] text-[var(--primary)] mt-2 flex items-center gap-1 font-mono">
+                        <span>[*]</span> AI Software Engineer
                     </div>
                 </motion.div>
 
@@ -99,106 +190,46 @@ export default function MetricsDashboard() {
                     <span className="text-2xl font-bold text-white font-mono">
                         RAG & LLMs
                     </span>
-                    <div className="text-[10px] text-green-400 mt-2 flex items-center gap-1">
-                        <span>&#10003;</span> Full-Stack AI
+                    <div className="text-[10px] text-green-400 mt-2 flex items-center gap-1 font-mono">
+                        <span>[OK]</span> Full-Stack AI
                     </div>
                 </motion.div>
             </div>
 
             {/* Tech Stack Display */}
             <motion.div
-                className="flex-grow min-h-[300px] relative rounded-2xl border border-[var(--glass-border)] glass-panel flex items-center justify-center overflow-hidden"
+                className="flex-grow relative rounded-2xl border border-[var(--glass-border)] glass-panel p-6 overflow-hidden"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
             >
-                {/* Label */}
-                <div className="absolute top-4 right-4 text-xs font-mono text-gray-500 z-20">
-                    TECH_STACK_VIEW
+                {/* Header */}
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-gray-800">
+                    <div className="flex items-center gap-2">
+                        <span className="text-[var(--primary)] font-mono">&gt;_</span>
+                        <span className="text-sm font-mono text-gray-400">tech_stack.config</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        <span className="text-xs font-mono text-gray-600">LOADED</span>
+                    </div>
                 </div>
 
-                {/* Core */}
-                <motion.div
-                    className="relative z-10 w-16 h-16 rounded-full bg-gradient-to-br from-gray-800 to-black border border-[var(--primary)]/50 flex items-center justify-center shadow-[0_0_30px_rgba(0,225,255,0.3)]"
-                    animate={{
-                        boxShadow: [
-                            "0 0 20px rgba(0, 225, 255, 0.2)",
-                            "0 0 40px rgba(0, 225, 255, 0.4)",
-                            "0 0 20px rgba(0, 225, 255, 0.2)"
-                        ]
+                {/* Tech Categories */}
+                <TechCategory title="languages" items={techStack.languages} baseDelay={0.1} />
+                <TechCategory title="ai_ml" items={techStack.aiml} baseDelay={0.2} />
+                <TechCategory title="backend" items={techStack.backend} baseDelay={0.3} />
+                <TechCategory title="frontend" items={techStack.frontend} baseDelay={0.4} />
+                <TechCategory title="devops" items={techStack.devops} baseDelay={0.5} />
+
+                {/* Scanline Effect */}
+                <div
+                    className="absolute inset-0 pointer-events-none opacity-5"
+                    style={{
+                        background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 225, 255, 0.03) 2px, rgba(0, 225, 255, 0.03) 4px)"
                     }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                >
-                    <span className="text-3xl">&#129302;</span>
-                </motion.div>
-
-                {/* Inner Orbit Ring */}
-                <motion.div
-                    className="absolute border border-gray-700/50 rounded-full w-48 h-48"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                    {/* Orbiting Items */}
-                    <div
-                        className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1b2226] p-1.5 rounded-full border border-gray-600 shadow-lg"
-                        title="FastAPI"
-                    >
-                        <div className="w-6 h-6 flex items-center justify-center text-green-400 font-bold text-xs">
-                            FA
-                        </div>
-                    </div>
-                    <div
-                        className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#1b2226] p-1.5 rounded-full border border-gray-600 shadow-lg"
-                        title="React"
-                    >
-                        <div className="w-6 h-6 flex items-center justify-center text-cyan-400 font-bold text-xs">
-                            Re
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Middle Orbit Ring */}
-                <motion.div
-                    className="absolute border border-dashed border-gray-700/30 rounded-full w-72 h-72"
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                >
-                    <div
-                        className="absolute top-1/2 -right-4 -translate-y-1/2 bg-[#1b2226] p-2 rounded-full border border-gray-600 shadow-lg"
-                        title="LangChain"
-                    >
-                        <div className="w-6 h-6 flex items-center justify-center text-yellow-400 font-bold text-xs">
-                            LC
-                        </div>
-                    </div>
-                    <div
-                        className="absolute top-1/2 -left-4 -translate-y-1/2 bg-[#1b2226] p-2 rounded-full border border-gray-600 shadow-lg"
-                        title="Python"
-                    >
-                        <div className="w-6 h-6 flex items-center justify-center text-blue-400 font-bold text-xs">
-                            Py
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Outer Orbit Ring */}
-                <div className="absolute border border-gray-800 rounded-full w-96 h-96 opacity-50" />
-
-                {/* Floating OpenAI Icon */}
-                <motion.div
-                    className="absolute top-10 right-10"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                >
-                    <div className="bg-[#1b2226] p-2 rounded-full border border-[var(--primary)]/50 shadow-[0_0_15px_rgba(0,225,255,0.3)]">
-                        <span className="text-white text-lg">&#8734;</span>
-                    </div>
-                </motion.div>
-
-                {/* Decoration Particles */}
-                <div className="absolute w-1 h-1 bg-[var(--primary)] rounded-full top-1/4 left-1/4 animate-ping" />
-                <div className="absolute w-1 h-1 bg-[var(--secondary)] rounded-full bottom-1/3 right-1/4 animate-pulse" />
+                />
             </motion.div>
         </div>
     );

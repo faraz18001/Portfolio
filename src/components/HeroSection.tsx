@@ -172,7 +172,7 @@ export default function HeroSection() {
                         {/* Tech Stack */}
                         <div className="flex items-center gap-3 text-gray-400">
                             <span className="text-[var(--primary)] font-mono">&gt;_</span>
-                            <span className="text-sm font-mono">Python // FastAPI // React // LangChain</span>
+                            <span className="text-sm font-mono">Python // C++ // LangChain // FastAPI // React</span>
                         </div>
 
                         {/* Metrics */}
