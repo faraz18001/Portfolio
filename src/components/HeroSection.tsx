@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react";
 
 export default function HeroSection() {
     return (
@@ -107,7 +107,7 @@ export default function HeroSection() {
                         className="relative flex items-center justify-center gap-3 rounded-lg bg-[var(--background)] px-8 py-4 text-base font-bold text-white transition-all hover:bg-[#0c1624]"
                     >
                         <span>View My Work</span>
-                        <ArrowRight className="w-5 h-5 text-[var(--primary)] group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-5 h-5 text-[var(--primary)] group-hover:translate-x-1 transition-transform" weight="bold" />
                     </a>
                 </motion.div>
 
@@ -118,7 +118,7 @@ export default function HeroSection() {
                     transition={{ duration: 6, repeat: Infinity }}
                 >
                     <div className="glass-panel px-4 py-2 rounded-lg flex items-center gap-2 border-l-2 border-l-[var(--primary)]">
-                        <span className="text-[var(--primary)] text-sm">&#128202;</span>
+                        <span className="text-[var(--primary)] text-sm font-mono">[~]</span>
                         <span className="text-gray-200 text-xs font-mono font-bold uppercase tracking-wider">
                             Data Analytics
                         </span>
@@ -132,7 +132,7 @@ export default function HeroSection() {
                     transition={{ duration: 7, repeat: Infinity, delay: 1 }}
                 >
                     <div className="glass-panel px-4 py-2 rounded-lg flex items-center gap-2 border-r-2 border-r-[var(--secondary)]">
-                        <span className="text-[var(--secondary)] text-sm">&#129302;</span>
+                        <span className="text-[var(--secondary)] text-sm font-mono">[*]</span>
                         <span className="text-gray-200 text-xs font-mono font-bold uppercase tracking-wider">
                             RAG Systems
                         </span>
@@ -167,8 +167,8 @@ export default function HeroSection() {
                     <div className="flex flex-wrap justify-between items-center gap-6">
                         {/* Tech Stack */}
                         <div className="flex items-center gap-3 text-gray-400">
-                            <span className="text-[var(--primary)]">&#128187;</span>
-                            <span className="text-sm font-mono">Python - FastAPI - React - LangChain</span>
+                            <span className="text-[var(--primary)] font-mono">&gt;_</span>
+                            <span className="text-sm font-mono">Python // FastAPI // React // LangChain</span>
                         </div>
 
                         {/* Metrics */}

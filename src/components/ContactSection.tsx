@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Github, Linkedin, Mail, Twitter, Download } from "lucide-react";
+import { PaperPlaneTilt, GithubLogo, LinkedinLogo, Envelope, TwitterLogo, DownloadSimple } from "@phosphor-icons/react";
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -28,10 +28,10 @@ export default function ContactSection() {
     };
 
     const socialLinks = [
-        { icon: <Github className="w-5 h-5" />, href: "https://github.com/faraz18001", label: "GitHub" },
-        { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-        { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
-        { icon: <Mail className="w-5 h-5" />, href: "mailto:faraz@example.com", label: "Email" },
+        { icon: <GithubLogo className="w-5 h-5" weight="bold" />, href: "https://github.com/faraz18001", label: "GitHub" },
+        { icon: <LinkedinLogo className="w-5 h-5" weight="bold" />, href: "#", label: "LinkedIn" },
+        { icon: <TwitterLogo className="w-5 h-5" weight="bold" />, href: "#", label: "Twitter" },
+        { icon: <Envelope className="w-5 h-5" weight="bold" />, href: "mailto:faraz@example.com", label: "Email" },
     ];
 
     return (
@@ -76,7 +76,7 @@ export default function ContactSection() {
                 >
                     <div className="flex items-center justify-center gap-2 text-[var(--primary)]/60 mb-4">
                         <div className="w-8 h-[1px] bg-[var(--primary)]/40" />
-                        <span className="text-xs font-mono tracking-widest uppercase">Get in Touch</span>
+                        <span className="text-xs font-mono tracking-widest uppercase">// get_in_touch</span>
                         <div className="w-8 h-[1px] bg-[var(--primary)]/40" />
                     </div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -106,7 +106,7 @@ export default function ContactSection() {
                                     type="text"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="w-full bg-[#0f1214] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all placeholder:text-gray-600"
+                                    className="w-full bg-[#0f1214] border border-gray-700 rounded-lg px-4 py-3 text-white font-mono focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all placeholder:text-gray-600"
                                     placeholder="John Doe"
                                     required
                                 />
@@ -120,7 +120,7 @@ export default function ContactSection() {
                                     type="email"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="w-full bg-[#0f1214] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all placeholder:text-gray-600"
+                                    className="w-full bg-[#0f1214] border border-gray-700 rounded-lg px-4 py-3 text-white font-mono focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all placeholder:text-gray-600"
                                     placeholder="john@example.com"
                                     required
                                 />
@@ -134,7 +134,7 @@ export default function ContactSection() {
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     rows={4}
-                                    className="w-full bg-[#0f1214] border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all resize-none placeholder:text-gray-600"
+                                    className="w-full bg-[#0f1214] border border-gray-700 rounded-lg px-4 py-3 text-white font-mono focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all resize-none placeholder:text-gray-600"
                                     placeholder="Tell me about your project..."
                                     required
                                 />
@@ -144,7 +144,7 @@ export default function ContactSection() {
                                 type="submit"
                                 disabled={isSubmitting || isSubmitted}
                                 className={`
-                  w-full py-4 rounded-lg font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all
+                  w-full py-4 rounded-lg font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-all font-mono
                   ${isSubmitted
                                         ? "bg-green-500 text-white"
                                         : "bg-[var(--primary)] text-black hover:bg-white shadow-[0_0_20px_rgba(0,225,255,0.3)] hover:shadow-[0_0_30px_rgba(0,225,255,0.5)]"
@@ -158,12 +158,12 @@ export default function ContactSection() {
                                     </>
                                 ) : isSubmitted ? (
                                     <>
-                                        <span>&#10003;</span>
+                                        <span>[OK]</span>
                                         Message Sent!
                                     </>
                                 ) : (
                                     <>
-                                        <Send className="w-5 h-5" />
+                                        <PaperPlaneTilt className="w-5 h-5" weight="bold" />
                                         Send Message
                                     </>
                                 )}
@@ -182,7 +182,7 @@ export default function ContactSection() {
                         {/* Social Links */}
                         <div className="glass-panel rounded-2xl p-6">
                             <h3 className="text-sm font-mono text-gray-400 uppercase tracking-wider mb-4">
-                                Connect
+                // connect
                             </h3>
                             <div className="grid grid-cols-2 gap-3">
                                 {socialLinks.map((link, i) => (
@@ -196,7 +196,7 @@ export default function ContactSection() {
                                         <span className="text-gray-400 group-hover:text-[var(--primary)] transition-colors">
                                             {link.icon}
                                         </span>
-                                        <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+                                        <span className="text-sm text-gray-300 group-hover:text-white transition-colors font-mono">
                                             {link.label}
                                         </span>
                                     </a>
@@ -207,16 +207,16 @@ export default function ContactSection() {
                         {/* Resume Download */}
                         <div className="glass-panel rounded-2xl p-6 flex-grow">
                             <h3 className="text-sm font-mono text-gray-400 uppercase tracking-wider mb-4">
-                                Resume
+                // resume
                             </h3>
                             <div className="flex flex-col items-center justify-center h-full py-6">
                                 <div className="w-16 h-16 rounded-full bg-[var(--primary)]/10 border border-[var(--primary)]/30 flex items-center justify-center mb-4">
-                                    <Download className="w-8 h-8 text-[var(--primary)]" />
+                                    <DownloadSimple className="w-8 h-8 text-[var(--primary)]" weight="bold" />
                                 </div>
-                                <p className="text-gray-400 text-sm text-center mb-4">
-                                    Download my resume for detailed project history and skills.
+                                <p className="text-gray-400 text-sm text-center mb-4 font-mono">
+                                    Download my resume for detailed project history.
                                 </p>
-                                <button className="px-6 py-3 rounded-lg border border-[var(--primary)]/40 text-[var(--primary)] font-bold text-sm uppercase tracking-wider hover:bg-[var(--primary)] hover:text-black transition-all">
+                                <button className="px-6 py-3 rounded-lg border border-[var(--primary)]/40 text-[var(--primary)] font-bold text-sm uppercase tracking-wider hover:bg-[var(--primary)] hover:text-black transition-all font-mono">
                                     Download CV
                                 </button>
                             </div>
@@ -233,7 +233,7 @@ export default function ContactSection() {
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
                     <p className="text-xs font-mono text-gray-600">
-                        FARAZ.DEV - 2026
+                        FARAZ.DEV // 2026
                     </p>
                     <p className="text-xs font-mono text-gray-700 mt-2">
                         Built with Next.js, TypeScript & Framer Motion

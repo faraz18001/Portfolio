@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Code2 } from "lucide-react";
+import { List, X, Code } from "@phosphor-icons/react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--primary)]/10 border border-[var(--primary)]/20">
-            <Code2 className="w-5 h-5 text-[var(--primary)]" />
+            <Code className="w-5 h-5 text-[var(--primary)]" weight="bold" />
           </div>
           <span className="text-white text-lg font-bold tracking-tight">
             FARAZ<span className="text-[var(--primary)]">.DEV</span>
@@ -62,7 +62,7 @@ export default function Navbar() {
             className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" weight="bold" /> : <List className="w-6 h-6" weight="bold" />}
           </button>
         </div>
       </nav>

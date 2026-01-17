@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Play } from "lucide-react";
+import { ArrowSquareOut, GithubLogo, Play } from "@phosphor-icons/react";
 
 interface ProjectCardProps {
     title: string;
@@ -29,9 +29,9 @@ export default function ProjectCard({
     actionIcon,
 }: ProjectCardProps) {
     const iconMap = {
-        github: <Github className="w-4 h-4" />,
-        play: <Play className="w-4 h-4" />,
-        link: <ExternalLink className="w-4 h-4" />,
+        github: <GithubLogo className="w-4 h-4" weight="bold" />,
+        play: <Play className="w-4 h-4" weight="fill" />,
+        link: <ArrowSquareOut className="w-4 h-4" weight="bold" />,
     };
 
     return (
@@ -115,9 +115,9 @@ export default function ProjectCard({
                                 className="text-xs font-mono uppercase tracking-widest"
                                 style={{ color: accentColor }}
                             >
-                                Architecture.json
+                // architecture
                             </span>
-                            <span className="text-white/50 text-sm">&#128196;</span>
+                            <span className="text-white/50 text-sm font-mono">*.py</span>
                         </div>
 
                         {/* Code Preview */}

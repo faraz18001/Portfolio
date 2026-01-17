@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shuffle, Zap, Code, FileJson, Terminal as TerminalIcon } from "lucide-react";
+import { Shuffle, Lightning, Code, FileCode, Terminal } from "@phosphor-icons/react";
 
 const codeContent = `import torch
 from transformers import BertTokenizer, BertForSequenceClassification
@@ -83,10 +83,10 @@ export default function AIPlayground() {
                 <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-4">
                         <div className="w-8 h-8 flex items-center justify-center rounded bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-black">
-                            <TerminalIcon className="w-5 h-5" />
+                            <Terminal className="w-5 h-5" weight="bold" />
                         </div>
                         <h2 className="text-white text-lg font-bold tracking-wider uppercase">
-                            AI Portfolio <span className="text-[var(--primary)]">//</span> Playground
+                            AI Playground <span className="text-[var(--primary)] font-mono">//</span> Demo
                         </h2>
                     </div>
                 </div>
@@ -98,11 +98,11 @@ export default function AIPlayground() {
                         <div className="glass-panel rounded-xl p-1 shadow-lg flex flex-col">
                             <div className="p-5 border-b border-white/5 flex justify-between items-center bg-gradient-to-r from-transparent to-white/[0.02]">
                                 <h3 className="text-[var(--primary)] font-bold tracking-widest text-sm flex items-center gap-2">
-                                    <span className="text-base">&#129504;</span>
+                                    <span className="font-mono">[~]</span>
                                     SENTIMENT ANALYSIS V2.0
                                 </h3>
                                 <span className="text-xs font-mono text-gray-500 border border-gray-700 px-2 py-1 rounded">
-                                    BERT-LARGE-CASED
+                                    BERT-LARGE
                                 </span>
                             </div>
 
@@ -113,7 +113,7 @@ export default function AIPlayground() {
                                     </label>
                                     <div className="relative group">
                                         <textarea
-                                            className="w-full bg-[#0f1214] border border-gray-700 rounded-lg p-4 text-gray-200 font-sans text-base min-h-[160px] resize-none focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all shadow-inner placeholder:text-gray-600"
+                                            className="w-full bg-[#0f1214] border border-gray-700 rounded-lg p-4 text-gray-200 font-mono text-sm min-h-[160px] resize-none focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all shadow-inner placeholder:text-gray-600"
                                             placeholder="Enter a sentence to analyze sentiment..."
                                             value={inputText}
                                             onChange={(e) => setInputText(e.target.value)}
@@ -135,8 +135,8 @@ export default function AIPlayground() {
                                         className="flex-1 bg-gray-800 hover:bg-gray-700 text-white py-3 rounded-lg text-sm font-bold tracking-wide transition-colors border border-gray-700 flex items-center justify-center gap-2"
                                         onClick={handleRandomSample}
                                     >
-                                        <Shuffle className="w-4 h-4" />
-                                        Random Sample
+                                        <Shuffle className="w-4 h-4" weight="bold" />
+                                        Random
                                     </button>
                                 </div>
 
@@ -146,7 +146,7 @@ export default function AIPlayground() {
                                     disabled={isRunning}
                                 >
                                     <span className="relative z-10">{isRunning ? "Processing..." : "Run Inference"}</span>
-                                    <Zap className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                                    <Lightning className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" weight="fill" />
                                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                 </button>
                             </div>
@@ -177,8 +177,8 @@ export default function AIPlayground() {
                                 {/* Positive */}
                                 <div className="relative">
                                     <div className="flex justify-between text-xs font-bold tracking-wider mb-2">
-                                        <span className="text-gray-300">POSITIVE</span>
-                                        <span className="text-[var(--primary)]">{predictions.positive}%</span>
+                                        <span className="text-gray-300 font-mono">POSITIVE</span>
+                                        <span className="text-[var(--primary)] font-mono">{predictions.positive}%</span>
                                     </div>
                                     <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
                                         <motion.div
@@ -194,8 +194,8 @@ export default function AIPlayground() {
                                 {/* Neutral */}
                                 <div className="relative">
                                     <div className="flex justify-between text-xs font-bold tracking-wider mb-2">
-                                        <span className="text-gray-300">NEUTRAL</span>
-                                        <span className="text-[var(--secondary)]">{predictions.neutral}%</span>
+                                        <span className="text-gray-300 font-mono">NEUTRAL</span>
+                                        <span className="text-[var(--secondary)] font-mono">{predictions.neutral}%</span>
                                     </div>
                                     <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden relative">
                                         <div className="absolute inset-0 bg-[var(--primary)]/5 animate-pulse" />
@@ -212,8 +212,8 @@ export default function AIPlayground() {
                                 {/* Negative */}
                                 <div className="relative">
                                     <div className="flex justify-between text-xs font-bold tracking-wider mb-2">
-                                        <span className="text-gray-300">NEGATIVE</span>
-                                        <span className="text-gray-400">{predictions.negative}%</span>
+                                        <span className="text-gray-300 font-mono">NEGATIVE</span>
+                                        <span className="text-gray-400 font-mono">{predictions.negative}%</span>
                                     </div>
                                     <div className="h-2 w-full bg-gray-800 rounded-full overflow-hidden">
                                         <motion.div
@@ -244,22 +244,22 @@ export default function AIPlayground() {
                                     <span>user@portfolio:~/projects/nlp</span>
                                 </div>
                                 <div className="text-gray-600 hover:text-white cursor-pointer transition-colors">
-                                    <span className="text-sm">&#9881;</span>
+                                    <span className="text-sm font-mono">[=]</span>
                                 </div>
                             </div>
 
                             {/* Code Tabs */}
                             <div className="flex bg-[#141719] border-b border-white/5">
                                 <div className="px-6 py-2 bg-[#0E1112] text-[var(--primary)] text-xs font-mono border-t-2 border-[var(--primary)] flex items-center gap-2">
-                                    <Code className="w-3.5 h-3.5" />
+                                    <Code className="w-3.5 h-3.5" weight="bold" />
                                     inference.py
                                 </div>
                                 <div className="px-6 py-2 text-gray-500 hover:text-gray-300 cursor-pointer text-xs font-mono border-t-2 border-transparent flex items-center gap-2 transition-colors">
-                                    <FileJson className="w-3.5 h-3.5" />
+                                    <FileCode className="w-3.5 h-3.5" weight="bold" />
                                     config.json
                                 </div>
                                 <div className="px-6 py-2 text-gray-500 hover:text-gray-300 cursor-pointer text-xs font-mono border-t-2 border-transparent flex items-center gap-2 transition-colors">
-                                    <TerminalIcon className="w-3.5 h-3.5" />
+                                    <Terminal className="w-3.5 h-3.5" weight="bold" />
                                     output.log
                                 </div>
                             </div>
@@ -313,7 +313,7 @@ export default function AIPlayground() {
                             <div className="bg-[#141719] px-4 py-1.5 border-t border-white/5 flex justify-between items-center text-[10px] font-mono text-gray-500">
                                 <div className="flex gap-4">
                                     <span className="flex items-center gap-1">
-                                        <span className="text-[10px]">&#9734;</span> main
+                                        <span className="text-[10px]">[*]</span> main
                                     </span>
                                     <span>UTF-8</span>
                                     <span>Python 3.9</span>
