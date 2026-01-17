@@ -1,147 +1,165 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 const skills = [
-    { name: "RAG SYSTEMS", value: 95, angle: 0 },
-    { name: "DATA ANALYTICS", value: 90, angle: 60 },
-    { name: "FULL STACK", value: 85, angle: 120 },
-    { name: "ML / FORECASTING", value: 80, angle: 180 },
-    { name: "LLM AGENTS", value: 90, angle: 240 },
-    { name: "PYTHON", value: 95, angle: 300 },
+    { name: "RAG SYSTEMS", value: 95, icon: "[~]" },
+    { name: "PYTHON", value: 95, icon: "[#]" },
+    { name: "LLM AGENTS", value: 90, icon: "[*]" },
+    { name: "DATA ANALYTICS", value: 90, icon: "[$]" },
+    { name: "FULL STACK", value: 85, icon: "[>]" },
+    { name: "ML / FORECASTING", value: 80, icon: "[%]" },
 ];
 
-export default function SkillMatrix() {
-    // Calculate polygon points based on skill values
-    const calculatePoint = (angle: number, value: number, centerX: number, centerY: number, maxRadius: number) => {
-        const normalizedValue = value / 100;
-        const radius = normalizedValue * maxRadius;
-        const radians = (angle - 90) * (Math.PI / 180);
-        const x = centerX + radius * Math.cos(radians);
-        const y = centerY + radius * Math.sin(radians);
-        return { x, y };
-    };
+interface TerminalBarProps {
+    name: string;
+    value: number;
+    icon: string;
+    delay: number;
+}
 
-    const centerX = 200;
-    const centerY = 200;
-    const maxRadius = 160;
+function TerminalBar({ name, value, icon, delay }: TerminalBarProps) {
+    const [displayedValue, setDisplayedValue] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
 
-    // Generate polygon points
-    const polygonPoints = skills.map(skill => {
-        const point = calculatePoint(skill.angle, skill.value, centerX, centerY, maxRadius);
-        return `${point.x},${point.y}`;
-    }).join(" ");
+    const totalBlocks = 20;
+    const filledBlocks = Math.round((displayedValue / 100) * totalBlocks);
 
-    // Generate label positions
-    const labelPositions = skills.map(skill => {
-        const labelRadius = maxRadius + 40;
-        const radians = (skill.angle - 90) * (Math.PI / 180);
-        return {
-            name: skill.name,
-            x: centerX + labelRadius * Math.cos(radians),
-            y: centerY + labelRadius * Math.sin(radians),
-        };
-    });
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsVisible(true);
+        }, delay);
+        return () => clearTimeout(timer);
+    }, [delay]);
 
-    // Generate data point positions
-    const dataPoints = skills.map(skill => {
-        return calculatePoint(skill.angle, skill.value, centerX, centerY, maxRadius);
-    });
+    useEffect(() => {
+        if (!isVisible) return;
+
+        let current = 0;
+        const increment = value / 30;
+        const interval = setInterval(() => {
+            current += increment;
+            if (current >= value) {
+                setDisplayedValue(value);
+                clearInterval(interval);
+            } else {
+                setDisplayedValue(Math.floor(current));
+            }
+        }, 30);
+
+        return () => clearInterval(interval);
+    }, [isVisible, value]);
+
+    // Build the progress bar string
+    let barString = "";
+    for (let i = 0; i < totalBlocks; i++) {
+        if (i < filledBlocks) {
+            barString += "█";
+        } else {
+            barString += "░";
+        }
+    }
 
     return (
-        <div className="relative flex-grow min-h-[500px] rounded-2xl border border-[var(--glass-border)] glass-panel p-6 lg:p-10 flex flex-col items-center justify-center overflow-hidden group corner-borders">
-            {/* Chart Title */}
-            <div className="absolute top-6 left-8 flex flex-col gap-1">
-                <span className="text-xs font-mono text-[var(--primary)]/70 tracking-widest">
-                    SKILL_MATRIX
+        <motion.div
+            className="font-mono text-sm"
+            initial={{ opacity: 0, x: -20 }}
+            animate={isVisible ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.3 }}
+        >
+            {/* Skill Name Row */}
+            <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2">
+                    <span className="text-[var(--primary)]">{icon}</span>
+                    <span className="text-gray-300 text-xs tracking-wider">{name}</span>
+                </div>
+                <span className="text-[var(--primary)] text-xs">
+                    {displayedValue}%
                 </span>
-                <h3 className="text-xl font-bold text-white">Core Competencies</h3>
             </div>
 
-            {/* SVG Radar Chart */}
-            <div className="relative w-full max-w-lg aspect-square mt-8">
-                <svg
-                    viewBox="0 0 400 400"
-                    className="w-full h-full drop-shadow-[0_0_15px_rgba(0,225,255,0.15)]"
-                >
-                    <defs>
-                        <radialGradient id="radar-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                            <stop offset="0%" stopColor="rgba(0, 225, 255, 0.1)" />
-                            <stop offset="100%" stopColor="rgba(0, 225, 255, 0)" />
-                        </radialGradient>
-                        <linearGradient id="poly-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#00e1ff" stopOpacity="0.4" />
-                            <stop offset="100%" stopColor="#B537F2" stopOpacity="0.2" />
-                        </linearGradient>
-                    </defs>
-
-                    {/* Background Circles/Grid */}
-                    <g fill="none" stroke="rgb(55, 65, 81)" strokeWidth="1">
-                        <circle cx={centerX} cy={centerY} r={40} opacity={0.5} />
-                        <circle cx={centerX} cy={centerY} r={80} opacity={0.5} />
-                        <circle cx={centerX} cy={centerY} r={120} opacity={0.5} />
-                        <circle cx={centerX} cy={centerY} r={160} opacity={0.5} />
-                    </g>
-
-                    {/* Axes */}
-                    <g stroke="rgb(55, 65, 81)" strokeWidth="1" strokeDasharray="4 4">
-                        {skills.map((skill, i) => {
-                            const endPoint = calculatePoint(skill.angle, 100, centerX, centerY, maxRadius);
-                            return (
-                                <line
-                                    key={i}
-                                    x1={centerX}
-                                    y1={centerY}
-                                    x2={endPoint.x}
-                                    y2={endPoint.y}
-                                />
-                            );
-                        })}
-                    </g>
-
-                    {/* Data Polygon */}
-                    <motion.polygon
-                        points={polygonPoints}
-                        fill="url(#poly-gradient)"
-                        stroke="#00e1ff"
-                        strokeWidth="2"
-                        className="drop-shadow-[0_0_10px_rgba(0,225,255,0.6)]"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                    />
-
-                    {/* Data Points */}
-                    <g fill="#0b1013" stroke="#00e1ff" strokeWidth="2">
-                        {dataPoints.map((point, i) => (
-                            <motion.circle
-                                key={i}
-                                cx={point.x}
-                                cy={point.y}
-                                r={4}
-                                className="cursor-pointer hover:fill-[var(--primary)] transition-colors"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
-                            />
-                        ))}
-                    </g>
-
-                    {/* Labels */}
-                    <g
-                        className="text-[11px] font-mono font-bold"
-                        dominantBaseline="middle"
-                        textAnchor="middle"
-                        fill="rgb(209, 213, 219)"
+            {/* Progress Bar Row */}
+            <div className="flex items-center gap-2">
+                <span className="text-gray-600">[</span>
+                <div className="relative flex-1">
+                    <span
+                        className="text-[var(--primary)] tracking-[0.15em]"
+                        style={{
+                            textShadow: "0 0 10px rgba(0, 225, 255, 0.5)"
+                        }}
                     >
-                        {labelPositions.map((label, i) => (
-                            <text key={i} x={label.x} y={label.y}>
-                                {label.name}
-                            </text>
-                        ))}
-                    </g>
-                </svg>
+                        {barString.slice(0, filledBlocks)}
+                    </span>
+                    <span className="text-gray-700 tracking-[0.15em]">
+                        {barString.slice(filledBlocks)}
+                    </span>
+                </div>
+                <span className="text-gray-600">]</span>
             </div>
+        </motion.div>
+    );
+}
+
+export default function SkillMatrix() {
+    return (
+        <div className="relative flex-grow min-h-[500px] rounded-2xl border border-[var(--glass-border)] glass-panel p-6 lg:p-8 flex flex-col overflow-hidden group corner-borders">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-800">
+                <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-2">
+                        <span className="text-[var(--primary)] font-mono text-sm">&gt;_</span>
+                        <span className="text-xs font-mono text-[var(--primary)]/70 tracking-widest">
+                            SKILL_MATRIX.exe
+                        </span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white">Core Competencies</h3>
+                </div>
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-xs font-mono text-gray-500">RUNNING</span>
+                </div>
+            </div>
+
+            {/* Terminal Output Header */}
+            <div className="font-mono text-xs text-gray-500 mb-4">
+                <p className="text-green-400">$ analyzing skills...</p>
+                <p className="text-gray-600">Loading proficiency data...</p>
+                <p className="text-gray-600">---</p>
+            </div>
+
+            {/* Skill Bars */}
+            <div className="flex flex-col gap-5 flex-grow">
+                {skills.map((skill, index) => (
+                    <TerminalBar
+                        key={skill.name}
+                        name={skill.name}
+                        value={skill.value}
+                        icon={skill.icon}
+                        delay={index * 150}
+                    />
+                ))}
+            </div>
+
+            {/* Footer */}
+            <div className="mt-6 pt-4 border-t border-gray-800 font-mono text-xs text-gray-500">
+                <div className="flex items-center justify-between">
+                    <span>
+                        <span className="text-green-400">$</span> scan complete
+                    </span>
+                    <span className="text-gray-600">
+                        {skills.length} skills indexed
+                    </span>
+                </div>
+            </div>
+
+            {/* Scanline Effect */}
+            <div
+                className="absolute inset-0 pointer-events-none opacity-5"
+                style={{
+                    background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 225, 255, 0.03) 2px, rgba(0, 225, 255, 0.03) 4px)"
+                }}
+            />
         </div>
     );
 }
