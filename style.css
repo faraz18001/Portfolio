@@ -228,8 +228,25 @@ body {
 }
 
 @media (max-width: 640px) {
+  .site-nav .nav-inner {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: space-between;
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-link {
+    font-size: var(--text-2xs);
+  }
+
+  .email-address {
+    word-break: break-all;
   }
 }
 
